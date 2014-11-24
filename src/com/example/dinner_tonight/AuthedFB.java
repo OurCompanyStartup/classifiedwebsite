@@ -3,8 +3,10 @@ package com.example.dinner_tonight;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -118,24 +120,35 @@ public class AuthedFB extends Fragment {
 	}
 	
 	private class PeopleListElement extends BaseListElement {
-
+		
 	    public PeopleListElement(int requestCode) {
-	        super(getActivity().getResources().getDrawable(R.drawable.action_people),
+	        super(
+	        		getActivity().getResources().getDrawable(R.drawable.action_people),
 	              getActivity().getResources().getString(R.string.action_people),
 	              getActivity().getResources().getString(R.string.action_people_default),
 	              requestCode);
 	    }
-
+	    
 	    @Override
 	    protected View.OnClickListener getOnClickListener() {
+	    	 
 	        return new View.OnClickListener() {
 	            @Override
 	            public void onClick(View view) {
-	                // Do nothing for now
+	                // Do nothing for now<del>// Do nothing for now</del>
+	    	        startPickerActivity(PickerActivity.FRIEND_PICKER, getRequestCode());
+	    	        //getRequestCode()
 	            }
 	        };
 	    }
 	}
+	
+	private void startPickerActivity(Uri data, int requestCode) {
+	     Intent intent = new Intent();
+	     intent.setData(data);
+	     intent.setClass(getActivity(), PickerActivity.class);
+	     startActivityForResult(intent, requestCode);
+	 }
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -158,25 +171,23 @@ public class AuthedFB extends Fragment {
 
 	    // Find the user's name view
 	    //userNameView = (TextView) view.findViewById(R.id.selection_user_name);
+	    // Set up the list view items, based on a list of
+	     // BaseListElement items
+	     listElements = new ArrayList<BaseListElement>();
+	     // Add an item for the friend picker
+	     listElements.add(new PeopleListElement(0));
+	    // listElements.add(new PeopleListElement(1));
+	     // Set the list view adapter
+	     listView.setAdapter(new ActionListAdapter(getActivity(), R.id.selection_list, listElements));
+	    
 	    
 	 // Check for an open session
 	    Session session = Session.getActiveSession();
 	    if (session != null && session.isOpened()) {
 	        // Get the user's data
 	        makeMeRequest(session);
-	        
-	     // Set up the list view items, based on a list of
-	     // BaseListElement items
-	     listElements = new ArrayList<BaseListElement>();
-	     // Add an item for the friend picker
-	     listElements.add(new PeopleListElement(0));
-	     // Set the list view adapter
-	     listView.setAdapter(new ActionListAdapter(getActivity(), 
-	                         R.id.selection_list, listElements));
-	    }	    
-	    
-	    }catch(Exception e) {
-	    	
+	    	}	    	    
+	    }catch(Exception e) {	    	
 	    }
 	    return view;
 	}
@@ -186,6 +197,8 @@ public class AuthedFB extends Fragment {
 	    super.onActivityResult(requestCode, resultCode, data);
 	    if (requestCode == REAUTH_ACTIVITY_CODE) {
 	        uiHelper.onActivityResult(requestCode, resultCode, data);
+	    }else if (resultCode == Activity.RESULT_OK) {
+	        // Do nothing for now
 	    }
 	}
 	

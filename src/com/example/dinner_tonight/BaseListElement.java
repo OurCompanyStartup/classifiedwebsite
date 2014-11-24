@@ -56,7 +56,16 @@ public abstract class BaseListElement {
 		return text2;
 	}
 	
+	public void setRequestCode(int requestCode){
+		this.requestCode = requestCode;
+		
+	if (adapter != null){
+			adapter.notifyDataSetChanged();
+		}
+	}
 	
-
+	public int getRequestCode(){
+		return requestCode;
+	}
 	
 }
