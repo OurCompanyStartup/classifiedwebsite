@@ -83,6 +83,7 @@ public class AuthedFB extends Fragment {
 	        this.listElements = listElements;
 	        // Set up as an observer for list item changes to
 	        // refresh the view.
+	        //define another
 	        for (int i = 0; i < listElements.size(); i++) {
 	            listElements.get(i).setAdapter(this);
 	        }
