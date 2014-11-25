@@ -1,3 +1,0 @@
-this is a test text file for Git
-
-Dude I am using VIM
