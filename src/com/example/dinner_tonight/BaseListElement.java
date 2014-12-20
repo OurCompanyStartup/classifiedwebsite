@@ -1,16 +1,39 @@
 package com.example.dinner_tonight;
 
+import java.util.List;
+
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
 
+import com.facebook.model.GraphUser;
+
 public abstract class BaseListElement {
 	private Drawable icon;
+	
 	private String text1;
+	
 	private String text2;
+	
 	private int requestCode;
+	
 	private BaseAdapter adapter;
+	
 	protected abstract View.OnClickListener getOnClickListener();
+	
+	protected void onActivityResult(Intent data) {}
+	
+	protected void onSaveInstanceState(Bundle bundle) {}
+	
+	protected boolean restoreState(Bundle savedState) {
+	    return false;
+	}
+	
+	protected void notifyDataChanged() {
+	    adapter.notifyDataSetChanged();
+	}
 	
 	public BaseListElement(Drawable icon, String text1, String text2, int requestCode) {
 	    super();

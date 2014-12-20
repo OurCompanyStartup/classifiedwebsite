@@ -1,10 +1,11 @@
 package com.example.dinner_tonight;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 public class NonAuthFB extends Fragment{
 	@Override

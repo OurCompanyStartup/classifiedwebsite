@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/passTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_pic"
@@ -21,7 +21,7 @@
         android:id="@+id/view1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
+        android:layout_above="@+id/passTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/title_bar"
@@ -34,7 +34,7 @@
         android:layout_height="60dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/passTextView"
         android:gravity="center_horizontal" >
     </com.facebook.widget.ProfilePictureView>
 
@@ -45,7 +45,7 @@
         android:layout_alignBottom="@+id/view1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/textView1"
+        android:layout_toLeftOf="@+id/passTextView"
         android:background="@drawable/icon"
        />
 
@@ -53,9 +53,7 @@
         android:id="@+id/selection_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_below="@+id/view1"
-        android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:background="@drawable/button_border" >
 

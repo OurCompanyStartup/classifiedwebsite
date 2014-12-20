@@ -13,4 +13,8 @@
           android:id="@+id/nonAuthFB"
           android:layout_width="match_parent"
           android:layout_height="match_parent" />
+    <fragment android:name="com.example.dinner_tonight.AccountSetup"
+          android:id="@+id/accSignUp"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
 </LinearLayout>

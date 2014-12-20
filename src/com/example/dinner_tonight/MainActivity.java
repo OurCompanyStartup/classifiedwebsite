@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.facebook.AppEventsLogger;
 import com.facebook.Session;
@@ -18,7 +20,8 @@ public class MainActivity extends FragmentActivity  {
 	
 	private static final int NONAUTH = 0;
 	private static final int AUTH = 1;
-	private static final int FRAGMENT_COUNT = AUTH +1;
+	private static final int ACCSIGNUP = 2;
+	private static final int FRAGMENT_COUNT = ACCSIGNUP +1;
 
 	private Fragment[] fragments = new Fragment[FRAGMENT_COUNT];
 	private void showFragment(int fragmentIndex, boolean addToBackStack) {
@@ -97,6 +100,7 @@ public class MainActivity extends FragmentActivity  {
 	    FragmentManager fm = getSupportFragmentManager();
 	    fragments[NONAUTH] = fm.findFragmentById(R.id.nonAuthFB);
 	    fragments[AUTH] = fm.findFragmentById(R.id.authedFB);
+	    fragments[ACCSIGNUP]= fm.findFragmentById(R.id.accSignUp);
 
 	    FragmentTransaction transaction = fm.beginTransaction();
 	    for(int i = 0; i < fragments.length; i++) {
@@ -157,6 +161,12 @@ public class MainActivity extends FragmentActivity  {
         super.onSaveInstanceState(outState);
         uiHelper.onSaveInstanceState(outState);
     }
+    
+    public void LogEmail(View view){
+    	
+	    Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show();
+
+		    }
     
     
 }
